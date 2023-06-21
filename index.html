@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,58 +9,105 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer type="module"></script>
 </head>
+
 <body>
     <header>
         <h1>Estalo Lastimável</h1>
+        <h2 class="titulo-rodada">Partida <span id="partida">1</span></h2>
+        <h3>você <span>0</span> X <span>0</span> comp</h3>
     </header>
 
     <main>
+        <h2 class="titulo-rodada">Rodada <span id="rodada">1</span>/6</h2>
+        <div class="lista-controlados">
+            <div>Locais controlados por você: <span id="controlados-vc">0</span></div>
+            <div>Locais controlados pelo computador: <span id="controlados-computador">0</span></div>
+            <div>Locais empatados: <span id="empatados">3</span></div>
+        </div>
+
         <div class="tabuleiro container">
             <div>
                 <div class="locais">
                     <div id="local1" class="local">
                         <h2>Local 1</h2>
+                        <ul>
+                            <li>Força: <span id="forca-l1">0</span></li>
+                            <li>Força computador: <span id="forca-l1-computador">0</span></li>
+                        </ul>
+                        <h4>Suas cartas:</h3>
                         <div class="cartas">
                             <div class="carta"></div>
                             <div class="carta"></div>
                             <div class="carta"></div>
                             <div class="carta"></div>
                         </div>
-                      </div>
+                        <h4>Cartas do computador:</h3>
+                        <div class="cartas">
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                        </div>
+                    </div>
 
-                      <div id="local2" class="local">
+                    <div id="local2" class="local">
                         <h2>Local 2</h2>
+                        <ul>
+                            <li>Força: <span id="forca-l2">0</span></li>
+                            <li>Força computador: <span id="forca-l2-computador">0</span></li>
+                        </ul>
+                        <h4>Suas cartas:</h3>
                         <div class="cartas">
                             <div class="carta"></div>
                             <div class="carta"></div>
                             <div class="carta"></div>
                             <div class="carta"></div>
                         </div>
-                      </div>
+                        <h4>Cartas do computador:</h3>
+                        <div class="cartas">
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                        </div>
+                    </div>
 
-                      <div id="local3" class="local">
+                    <div id="local3" class="local">
                         <h2>Local 3</h2>
+                        <ul>
+                            <li>Força: <span id="forca-l3">0</span></li>
+                            <li>Força computador: <span id="forca-l3-computador">0</span></li>
+                        </ul>
+                        <h4>Suas cartas:</h3>
                         <div class="cartas">
                             <div class="carta"></div>
                             <div class="carta"></div>
                             <div class="carta"></div>
                             <div class="carta"></div>
                         </div>
-                      </div>
+                        <h4>Cartas do computador:</h3>
+                        <div class="cartas">
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                            <div class="carta"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="mao-jogador">
                     <h2>Sua mão</h2>
+                    <h4>Energia Total: <span>1</span></h4>
                     <div class="cartas">
                         <div class="carta"></div>
                         <div class="carta"></div>
                         <div class="carta"></div>
                         <div class="carta"></div>
                     </div>
-            
-                  </div>
+
+                </div>
             </div>
-          </div>
+        </div>
 
     </main>
 
@@ -67,4 +115,5 @@
         Trabalho DCC121 - 2023.1&nbsp;&copy;
     </footer>
 </body>
+
 </html>

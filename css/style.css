@@ -6,6 +6,11 @@ header, footer {
     background-color: #f2f2f2;
     padding: 10px;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo-rodada {
+    text-align: center;
 }
 
 .tabuleiro {
@@ -20,7 +25,7 @@ header, footer {
 
 .local {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 0px 10px;
     width: 310px;
     margin-right: 15px;
 }
@@ -34,7 +39,6 @@ header, footer {
 
 .cartas {
     display: flex;
-    padding: 10px;
 }
 
 .carta {
@@ -46,6 +50,40 @@ header, footer {
     margin-bottom: 10px;
 } 
 
+.local > .cartas > .carta {
+    height: 75px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 footer {
     margin-top: 20px;
+}
+
+#forca-l1, #forca-l2, #forca-l3, 
+#forca-l1-computador, #forca-l2-computador, #forca-l3-computador {
+    font-weight: bold;
+}
+
+.lista-controlados{
+    display: flex;
+    margin-left: 23%;
+}
+
+.lista-controlados > div{
+    padding: 1%;
+}
+
+#controlados-vc, #controlados-computador, #empatados {
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 10px 20px 10px 20px;
+}
+
+#controlados-vc {
+    background-color: rgba(0, 128, 0, 0.63);
+}
+
+#controlados-computador {
+    background-color: rgba(255, 0, 0, 0.664);
 }

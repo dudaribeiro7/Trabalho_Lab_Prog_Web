@@ -1,12 +1,24 @@
+*{
+    margin: 0;
+}
+
 body {
     font-family: 'Times New Roman', Times, serif
 }
 
-header, footer {
+header {
     background-color: #f2f2f2;
-    padding: 10px;
+    padding: 1%;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 1%;
+    text-align: center;
 }
 
 .titulo-rodada {
@@ -15,8 +27,8 @@ header, footer {
 
 .tabuleiro {
     display: flex;
-    margin-top: 20px;
-    margin-left: 15%;
+    margin: 1%;
+    justify-content: space-between;
 }
 
 .locais {
@@ -25,16 +37,16 @@ header, footer {
 
 .local {
     border: 1px solid #ccc;
-    padding: 0px 10px;
-    width: 310px;
-    margin-right: 15px;
+    padding: 0% 1%;
+    width: 312px;
+    margin-right: 1%;
 }
 
 .mao-jogador {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 1%;
     width: 1000px;
-    margin-top: 20px;
+    margin-top: 1%;
 }
 
 .cartas {
@@ -42,25 +54,26 @@ header, footer {
 }
 
 .carta {
+    padding: 1%;
     background-color: #e0e0e0;
     border: 1px solid #ccc;
     width: 250px;
-    height: 150px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    height: 60px;
+    margin-right: 1%;
+    margin-bottom: 2.4%;
 } 
 
 .local > .cartas > .carta {
-    height: 75px;
-    margin-right: 5px;
-    margin-left: 5px;
+    height: 50px;
+    margin-right: 1%;
+    margin-left: 1%;
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: 1%;
 }
 
-#forca-l1, #forca-l2, #forca-l3, 
+#forca-l1-vc, #forca-l2-vc, #forca-l3-vc, 
 #forca-l1-computador, #forca-l2-computador, #forca-l3-computador {
     font-weight: bold;
 }

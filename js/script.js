@@ -8,11 +8,14 @@ let controladosJogador = 0;
 let controladosComputador = 0;
 let empatados = 3;
 
-let energiaTotal = 1;
+let energiaTotalJogador = 1;
+let energiaTotalComputador = 1;
 
 let maoJogador = [];
-let maoComputador = [];
 let baralhoRestanteJogador = [];
+
+let maoComputador = [];
+let baralhoRestanteComputador = [];
 
 let forcaL1Jog = 0;
 let forcaL2Jog = 0;
@@ -59,13 +62,14 @@ function novaPartida() {
     for (let i = 1; i <= 4; i++) {
         for (let j = 1; j <= 3; j++) {
             document.getElementById(`carta${i}-vc-l${j}`).innerHTML = '';
+            document.getElementById(`carta${i}-comp-l${j}`).innerHTML = '';
         }
     }
 
     atualizarInformacoes();
 
-    // Embaralhar o baralho
-    const baralho = [
+    // Embaralhar os baralhos
+    const baralho1 = [
         { nome: 'Homem de Ferro', custo: 3, forca: 2 },
         { nome: 'Viúva Negra', custo: 2, forca: 3 },
         { nome: 'Capitão América', custo: 2, forca: 1 },
@@ -79,10 +83,27 @@ function novaPartida() {
         { nome: 'Pantera Negra', custo: 1, forca: 2 },
         { nome: 'Doutor Estranho', custo: 3, forca: 2 }
     ];
-    baralhoRestanteJogador = shuffleArray(baralho);
+    baralhoRestanteJogador = shuffleArray(baralho1);
 
-    // Distribuir cartas iniciais para o jogador
+    const baralho2 = [
+        { nome: 'Homem de Ferro', custo: 3, forca: 2 },
+        { nome: 'Viúva Negra', custo: 2, forca: 3 },
+        { nome: 'Capitão América', custo: 2, forca: 1 },
+        { nome: 'Thor', custo: 3, forca: 4 },
+        { nome: 'Hulk', custo: 2, forca: 3 },
+        { nome: 'Gavião Arqueiro', custo: 1, forca: 2 },
+        { nome: 'Homem Formiga', custo: 1, forca: 1 },
+        { nome: 'Capitã Marvel', custo: 2, forca: 4 },
+        { nome: 'Homem Aranha', custo: 3, forca: 2 },
+        { nome: 'Wanda Maximoff', custo: 2, forca: 4 },
+        { nome: 'Pantera Negra', custo: 1, forca: 2 },
+        { nome: 'Doutor Estranho', custo: 3, forca: 2 }
+    ];
+    baralhoRestanteComputador = shuffleArray(baralho2);
+
+    // Distribuir cartas iniciais para o jogador e o computador
     maoJogador = baralhoRestanteJogador.splice(-4);
+    maoComputador = baralhoRestanteComputador.splice(-4);
 
     // Renderizar as cartas iniciais do jogador
     renderizarMaoJogador();
@@ -92,12 +113,16 @@ function novaPartida() {
 // Função para iniciar uma nova rodada
 function novaRodada() {
     rodadaAtual++;
-    energiaTotal = rodadaAtual;
+    energiaTotalJogador = rodadaAtual;
+    energiaTotalComputador = rodadaAtual;
     atualizarInformacoes();
 
-    // Sacar nova carta para o jogador
+    // Sacar nova carta para o jogador e para o computador
     const novaCartaJogador = baralhoRestanteJogador.pop();
     maoJogador.push(novaCartaJogador);
+
+    const novaCartaComputador = baralhoRestanteComputador.pop();
+    maoComputador.push(novaCartaComputador);
 
     // Renderizar nova carta do jogador
     renderizarMaoJogador();
@@ -113,7 +138,7 @@ function atualizarInformacoes() {
     document.getElementById('partidas-vc').textContent = partidasJogador;
     document.getElementById('partidas-computador').textContent = partidasComputador;
     document.getElementById('rodada-atual').textContent = rodadaAtual;
-    document.getElementById('energia-total').textContent = energiaTotal;
+    document.getElementById('energia-total').textContent = energiaTotalJogador;
 
     document.getElementById('forca-l1-vc').textContent = forcaL1Jog;
     document.getElementById('forca-l1-computador').textContent = forcaL1Comp;
@@ -158,12 +183,17 @@ function renderizarMaoJogador() {
             </ul>
         `;
         cartaElement.addEventListener('click', () => {
-            if (energiaTotal >= maoJogador[index].custo) {
+            if (energiaTotalJogador >= maoJogador[index].custo) {
                 const localSelecionado = prompt("Digite o número do local (1, 2 ou 3) para jogar a carta:");
                 const localId = `local${localSelecionado}`;
 
                 if (localSelecionado && localId && document.getElementById(localId)) {
-                    jogarCarta(index, localSelecionado);
+                    if((localSelecionado == 1 && indiceCartaL1Jog > 4) || (localSelecionado == 2 && indiceCartaL2Jog > 4) || (localSelecionado == 3 && indiceCartaL3Jog > 4) ){
+                        alert("Não é possível colocar mais do que 4 cartas em um local!");
+                    }
+                    else{
+                        jogarCarta(index, localSelecionado);
+                    }
                 } else {
                     alert("Local inválido!");
                 }
@@ -184,7 +214,7 @@ function jogarCarta(cartaIndex, localId) {
     const carta = maoJogador[cartaIndex];
     maoJogador.splice(cartaIndex, 1);
 
-    energiaTotal -= carta.custo;
+    energiaTotalJogador -= carta.custo;
 
     let indice;
     if (localId == 1) {
@@ -208,7 +238,50 @@ function jogarCarta(cartaIndex, localId) {
     atualizarInformacoes();
 }
 
+function jogadaComputador() {
+    let local;
+    let indice;
+    maoComputador.forEach(function (carta, index) 
+    {
+        if (carta.custo <= energiaTotalComputador) {
+            if (indiceCartaL1Comp <= 4 && indiceCartaL2Comp <= 4 && indiceCartaL3Comp <= 4)
+                local = Math.floor(Math.random() * 3) + 1;
+            else if (indiceCartaL1Comp <= 4 && indiceCartaL2Comp <= 4)
+                local = Math.floor(Math.random() * 2) + 1;
+            else if (indiceCartaL1Comp <= 4 && indiceCartaL3Comp <= 4)
+                local = Math.random() < 0.5 ? 1 : 3;
+            else if (indiceCartaL2Comp <= 4 && indiceCartaL3Comp <= 4)
+                local = Math.random() < 0.5 ? 2 : 3;
+
+            if (local == 1) {
+                indice = indiceCartaL1Comp;
+                indiceCartaL1Comp++;
+                forcaL1Comp += carta.forca;
+            }
+            else if (local == 2) {
+                indice = indiceCartaL2Comp;
+                indiceCartaL2Comp++;
+                forcaL2Comp += carta.forca;
+            }
+            else if (local == 3) {
+                indice = indiceCartaL3Comp;
+                indiceCartaL3Comp++;
+                forcaL3Comp += carta.forca;
+            }
+
+            energiaTotalComputador -= carta.custo;
+            maoComputador.splice(index, 1);
+
+            document.getElementById(`carta${indice}-comp-l${local}`).innerHTML = `<h5>${carta.nome}</h5>`;
+        }
+    });
+    atualizarInformacoes();
+}
+
 function finalizarRodada() {
+    alert('Rodada Finalizada!! O Computador vai jogar as cartas dele agora!');
+    jogadaComputador();
+
     if (rodadaAtual != 6)
         novaRodada();
     else {
@@ -245,7 +318,7 @@ function finalizarRodada() {
     }
 }
 
-function reiniciarPartida(){
+function reiniciarPartida() {
     partidaAtual--;
     novaPartida();
 }

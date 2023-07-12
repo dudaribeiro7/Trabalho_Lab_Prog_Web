@@ -35,6 +35,22 @@ let indiceCartaL3Comp = 1;
 
 // Iniciar a primeira partida e rodada
 document.addEventListener('DOMContentLoaded', function () {
+    var regras = "REGRAS DO JOGO\n\n" +
+        "1- Cada partida consiste em exatamente 6 rodadas.\n" +
+        "2- O objetivo do jogo é controlar a maioria dos 3 locais disponíveis.\n" +
+        "3- O jogador controla um local se a soma das forças dos seus personagens no local for maior do que a soma dos personagens do oponente também no local.\n" +
+        "4- Cada jogador começa com um baralho contendo as mesmas 12 cartas de personagens.\n" +
+        "5- No início da partida, os jogadores sacam aleatoriamente 4 cartas para suas mãos.\n" +
+        "6- No início de cada rodada, cada jogador recebe: 1 nova carta sacada aleatoriamente e adicionada à mão; Um total de energia igual à rodada atual (de 1 a 6).\n" +
+        "7- O jogador pode gastar energia para colocar as cartas da mão em um local válido.\n" +
+        "8- O jogador não pode colocar uma carta se não tiver energia suficiente para baixá-la.\n" +
+        "9- O jogador não pode colocar mais de 4 cartas em um local.\n" +
+        "10- A energia não utilizada é perdida ao final da rodada.\n" +
+        "11- O vencedor será aquele que, ao final da partida, controlar a maioria dos locais.\n" +
+        "12- Em caso de empate no número de locais controlados, o desempate será dado pela diferença da soma de forças total de cada jogador. Se o empate persistir, o computador vence.";
+
+    alert(regras);
+
     novaPartida();
 });
 
@@ -188,10 +204,10 @@ function renderizarMaoJogador() {
                 const localId = `local${localSelecionado}`;
 
                 if (localSelecionado && localId && document.getElementById(localId)) {
-                    if((localSelecionado == 1 && indiceCartaL1Jog > 4) || (localSelecionado == 2 && indiceCartaL2Jog > 4) || (localSelecionado == 3 && indiceCartaL3Jog > 4) ){
+                    if ((localSelecionado == 1 && indiceCartaL1Jog > 4) || (localSelecionado == 2 && indiceCartaL2Jog > 4) || (localSelecionado == 3 && indiceCartaL3Jog > 4)) {
                         alert("Não é possível colocar mais do que 4 cartas em um local!");
                     }
-                    else{
+                    else {
                         jogarCarta(index, localSelecionado);
                     }
                 } else {
@@ -241,8 +257,7 @@ function jogarCarta(cartaIndex, localId) {
 function jogadaComputador() {
     let local;
     let indice;
-    maoComputador.forEach(function (carta, index) 
-    {
+    maoComputador.forEach(function (carta, index) {
         if (carta.custo <= energiaTotalComputador) {
             if (indiceCartaL1Comp <= 4 && indiceCartaL2Comp <= 4 && indiceCartaL3Comp <= 4)
                 local = Math.floor(Math.random() * 3) + 1;

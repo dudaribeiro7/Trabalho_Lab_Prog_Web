@@ -1,16 +1,13 @@
-UNIVERSIDADE FEDERAL DE JUIZ DE FORA
-
-Instituto de Ciências Exatas
-
-Departamento de Ciência da Computação
-
+> UNIVERSIDADE FEDERAL DE JUIZ DE FORA | 
+Instituto de Ciências Exatas | 
+Departamento de Ciência da Computação | 
 Laboratório de Programação Web - DCC121 2023-1
 
-> Estalo Lastimável
+# Estalo Lastimável
 
 Neste trabalho, você e outros dois membros da equipe serão responsáveis por desenvolver o jogo "Estalo Lastimável" utilizando apenas HTML, CSS e JavaScript. O objetivo é criar a estrutura correta do HTML, aplicar estilos com seletores e regras de especificidade corretas, sem o uso de bibliotecas de estilo, e implementar todo o comportamento do jogo utilizando JavaScript puro (vanilla).
 
-> Regras do jogo
+## Regras do jogo
 
 1- Uma partida é disputada entre o jogador e o computador.
 
@@ -38,7 +35,7 @@ Neste trabalho, você e outros dois membros da equipe serão responsáveis por d
 
 13- Em caso de empate no número de locais controlados, o desempate será dado pela diferença da soma de forças total de cada jogador. Se o empate persistir, o computador vence.
 
-> Requisitos adicionais:
+## Requisitos adicionais:
 
 1- Utilize controle de versão para o desenvolvimento do projeto, com todas as etapas bem definidas e explicadas.
 
